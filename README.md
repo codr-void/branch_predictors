@@ -15,14 +15,14 @@ You will need a C++ compiler such as g++ to compile and run this simulation.
 2. **Compile the Program**:
    Open a terminal in the directory where the files are located and compile the program using the following command:
    ```bash
-   g++ -o branch_predictor main.cpp predictors.cpp
+   make all
    ```
    This command will compile the source files and link them into a single executable named `branch_predictor`.
 
 3. **Run the Program**:
    Execute the program with:
    ```bash
-   ./branch_predictor
+   ./main
    ```
 
    This will run the simulation and output the accuracy of the 1-bit and 2-bit predictors based on the branch outcomes provided in the `trace.txt` file.
