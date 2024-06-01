@@ -12,21 +12,7 @@
 
 // 1-bit branch predictor implementation
 double OneBitPredictor::calculateAccuracy(const vector<bool>& branchOutcomes) {
-    int correctPredictions = 0;
-    bool lastOutcome = false; // Initial state is 'not taken'
-
-    for (bool outcome : branchOutcomes) {
-        if (lastOutcome == outcome) {
-            correctPredictions++;
-        }
-        lastOutcome = outcome;
-    }
-    return static_cast<double>(correctPredictions) / branchOutcomes.size() * 100;
-}
-
-// 2-bit saturating counter branch predictor implementation
-double TwoBitPredictor::calculateAccuracy(const vector<bool>& branchOutcomes) {
-    int correctPredictions = 0;
+int correctPredictions = 0;
     int counter = 0; // Initial state is '00'
 
     for (bool outcome : branchOutcomes) {
@@ -42,6 +28,20 @@ double TwoBitPredictor::calculateAccuracy(const vector<bool>& branchOutcomes) {
         } else {
             if (counter > 0) counter--;
         }
+    }
+    return static_cast<double>(correctPredictions) / branchOutcomes.size() * 100;
+}
+
+// 2-bit saturating counter branch predictor implementation
+double TwoBitPredictor::calculateAccuracy(const vector<bool>& branchOutcomes) {
+    int correctPredictions = 0;
+    bool lastOutcome = false; // Initial state is 'not taken'
+
+    for (bool outcome : branchOutcomes) {
+        if (lastOutcome == outcome) {
+            correctPredictions++;
+        }
+        lastOutcome = outcome;
     }
     return static_cast<double>(correctPredictions) / branchOutcomes.size() * 100;
 }
